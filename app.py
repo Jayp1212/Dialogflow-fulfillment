@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import requests
 import time
 
@@ -9,7 +9,9 @@ app = Flask(__name__)
 # Route to return student number
 @app.route('/')
 def student_number():
-    return jsonify({'student_number': 'YourStudentNumber'})
+    student_number = '200543276'
+    # Render the HTML template with the student number
+    return render_template('index.html', student_number=student_number)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
